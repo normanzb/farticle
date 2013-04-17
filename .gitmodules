@@ -7,3 +7,9 @@
 [submodule "lib/BOE"]
 	path = lib/BOE
 	url = git@github.com:ETUI/BOE.git
+[submodule "lib/requirejs"]
+	path = lib/requirejs
+	url = git@github.com:jrburke/requirejs.git
+[submodule "lib/jquery"]
+	path = lib/jquery
+	url = git@github.com:jquery/jquery.git
