@@ -1,0 +1,9 @@
+[submodule "lib/EaselJS"]
+	path = lib/EaselJS
+	url = git@github.com:CreateJS/EaselJS.git
+[submodule "lib/COGS"]
+	path = lib/COGS
+	url = git@github.com:ETUI/COGS.git
+[submodule "lib/BOE"]
+	path = lib/BOE
+	url = git@github.com:ETUI/BOE.git
