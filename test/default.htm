@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas width='800' height='600'>
+    </canvas>
+    <script type="text/javascript">
+        window.require = {
+            "baseUrl" : '/farticle',
+            "packages" : [{
+                    "name" : "farticle",
+                    "location" : "src"
+                }, {
+                    "name" : "jquery",
+                    "location" : "lib/jquery",
+                    "main" : "dist/jquery"
+                }, {
+                    "name" : "when",
+                    "location" : "lib/when",
+                    "main" : "debug"
+                }, {
+                    "name" : "boe",
+                    "location" : "lib/BOE/src",
+                    "main" : "boe"
+                }, {
+                    "name" : "cogs",
+                    "location" : "lib/COGS",
+                    "main" : "cogs"
+                }
+            ],
+            "config" : {
+                "when" : {
+                    "paranoid" : false
+                }
+            },
+            "deps" : ["require"],
+            "callback" : function (parentRequire) {
+                var tests = [{
+                    renderer: 'test/d2/snowfall/Renderer',
+                    runner: 'test/d2/snowfall/Snowfall'
+                }, {
+                    renderer: 'test/d2/cloudy/Renderer',
+                    runner: 'test/d2/cloudy/Cloudy'
+                }, {
+                    renderer: 'test/d2/raining/Renderer',
+                    runner: 'test/d2/raining/Raining'
+                }, {
+                    renderer: 'test/d2/cloudyraining/Renderer',
+                    runner: 'test/d2/cloudyraining/CloudyRaining'
+                }, {
+                    renderer: 'test/d2/brownian/Renderer',
+                    runner: 'test/d2/brownian/Brownian'
+                }, {
+                    renderer: 'test/d2/spreading/Renderer',
+                    runner: 'test/d2/spreading/Spreading'
+                }];
+
+                var idx = 5;
+                parentRequire([
+                    'jquery',
+                    tests[idx].renderer,
+                    tests[idx].runner
+                ], 
+                function($, Renderer, Runner){
+                    var renderer = new Renderer($('canvas')[0]);
+                    var runner = new Runner();
+
+                    window.runner = runner;
+
+                    renderer.attach(runner);
+                    
+                    runner.start();
+
+                    setTimeout(function(){
+                        runner.pause();
+                    }, 1000 * 200);
+                });
+            }
+        };
+    </script>
+    <script type="text/javascript" src="../lib/requirejs/require.js"></script>
+</body>
+</html>
