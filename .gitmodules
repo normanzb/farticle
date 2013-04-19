@@ -13,3 +13,6 @@
 [submodule "lib/jquery"]
 	path = lib/jquery
 	url = git@github.com:jquery/jquery.git
+[submodule "lib/when"]
+	path = lib/when
+	url = git@github.com:cujojs/when.git
